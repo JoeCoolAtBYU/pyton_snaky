@@ -1,1 +1,1 @@
-This is my Readme file.
+This is my snake game for learning only not for any other purpose.
