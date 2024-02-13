@@ -1,5 +1,5 @@
 import time
-from turtle import Screen
+from turtle import Screen, Turtle
 
 from food import Food
 from scoreboard import ScoreBoard
@@ -18,7 +18,7 @@ screen = Screen()
 snake = Snake()
 food = Food()
 scoreboard = ScoreBoard()
-screen.setup(width=600, height=600)
+screen.setup(width=800, height=800)
 img = tkinter.Image("photo", file=image_path)
 screen._root.iconphoto(True, img)
 screen.bgcolor("black")
@@ -30,6 +30,20 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
+def create_border():
+    border = Turtle()
+    border.speed(0)
+    border.color("white")
+    border.penup()
+    border.goto(-290, -290)
+    border.pendown()
+    border.pensize(3)
+    for _ in range(4):
+        border.fd(580)
+        border.lt(90)
+    border.hideturtle()
+
+create_border()
 
 while game_is_on:
     screen.update()
@@ -43,7 +57,7 @@ while game_is_on:
         scoreboard.increase_score()
 
     # Detect Collision with wall
-    if snake.head.xcor() > 280 or snake.head.xcor() < -300 or snake.head.ycor() > 300 or snake.head.ycor() < -300:
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_is_on = False
         scoreboard.game_over()
 
@@ -67,6 +81,7 @@ while game_is_on:
             scoreboard.reset()
             scoreboard = ScoreBoard()
             food = Food()
+            create_border()
             game_is_on = True
         else:
             screen.bye()
