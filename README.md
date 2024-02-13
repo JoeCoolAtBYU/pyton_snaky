@@ -5,3 +5,5 @@ snake <a href='https://pngtree.com/freepng/snake-clipart-stickers-hand-drawn-cut
 to package and create an exe file to run the game:
 1. in a terminal run:
    2. > pyinstaller --add-data "src\images;images"  src\main.py
+2. if you don't have pyinstaller run:
+   3. >pip install pyinstaller
