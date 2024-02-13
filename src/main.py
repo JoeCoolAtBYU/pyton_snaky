@@ -4,8 +4,13 @@ from turtle import Screen
 from food import Food
 from scoreboard import ScoreBoard
 from snake import Snake
+import tkinter
+import os
 
 COLLISION_DISTANCE = 15
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(script_dir, "images", "snake.png")
 
 
 game_is_on = True
@@ -14,6 +19,8 @@ snake = Snake()
 food = Food()
 scoreboard = ScoreBoard()
 screen.setup(width=600, height=600)
+img = tkinter.Image("photo", file=image_path)
+screen._root.iconphoto(True, img)
 screen.bgcolor("black")
 screen.title("Snaky")
 screen.tracer(0)
